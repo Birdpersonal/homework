@@ -2,7 +2,7 @@ import re
 
 
 def names_students(file_txt: str) -> list:
-    """ Функция очищает список студентов"""
+    """Функция очищает список студентов"""
     new_list = list()
     with open("data2" + file_txt, encoding="utf-8") as file_names:
         names_list = file_names.read().split()
@@ -18,12 +18,12 @@ def names_students(file_txt: str) -> list:
 
 
 def is_cirillica(name_item: str) -> bool:
-    """ Функция проверяет на русские имена"""
-    return bool(re.search("[а-яА-Я]",name_item))
+    """Функция проверяет на русские имена"""
+    return bool(re.search("[а-яА-Я]", name_item))
 
 
 def filter_russian_names(name_list: list) -> list:
-    """Функция фильтрует русские имена """
+    """Функция фильтрует русские имена"""
     new_name_list = list()
     for i in name_list:
         if is_cirillica(i):
@@ -32,7 +32,7 @@ def filter_russian_names(name_list: list) -> list:
 
 
 def filter_english_names(name_list: list) -> list:
-    """Функция фильтрует английские имена """
+    """Функция фильтрует английские имена"""
     new_name_list = list()
     for i in name_list:
         if not is_cirillica(i):
@@ -50,12 +50,6 @@ if __name__ == "__main__":
     clered_name = names_students("/names.txt")
 
     filtered_name = filter_russian_names(clered_name)
-    save_to_file(
-        "russian_name.txt",
-        "\n".join(filtered_name)
-    )
+    save_to_file("russian_name.txt", "\n".join(filtered_name))
     filtered_name = filter_english_names(clered_name)
-    save_to_file(
-        "english_name.txt",
-        "\n".join(filtered_name)
-    )
+    save_to_file("english_name.txt", "\n".join(filtered_name))
