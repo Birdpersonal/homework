@@ -22,5 +22,3 @@ def get_mask_account(nums: int) -> str:
         return "Неккоректное количество цифр"
     mask_account = "**" + str_nums[-4:]
     return mask_account
-
-
